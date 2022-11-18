@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+</html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matchmaker</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>
+    <span>♥♥♥ Matchmaker ♥♥♥</span>
+    <br>
+    <span>by:Ali Ahsan</span>
+    </h1>
+    <p>Welcome to Matchmaker, Select the dropdown options to see if you are a match for me. At the end of all your responses please click on calculate compatibility as it will give a percentage of how much we are compatible. </p> <!--add instructions-->
+
+    <!--Reference https://www.w3schools.com/tags/tag_option.asp-->
+    
+    <label>Mustangs are better then Chargers</label> 
+      <select id="q1">
+      <option value="5">Strongly Agree</option>
+      <option value="4">Agree</option>
+      <option value="3">Neither agree nor disagree</option>
+      <option value="2">Disagree</option>
+      <option value="1">Strongly Disagree</option>
+    </select>
+    <br><br>
+    <label>iPhones are better then Androids</label>
+     <select id="q2">
+      <option value="5">Strongly Agree</option>
+      <option value="4">Agree</option>
+      <option value="3">Neither agree nor disagree</option>
+      <option value="2">Disagree</option>
+      <option value="1">Strongly Disagree</option>
+    </select>
+    <br><br>
+    <label>Cats are better then Dogs</label>
+    <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+    <br><br>
+    <label>Windows is better then Mac Os</label>
+    <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+    <br><br>
+    <label>Cardio is better then weightlifting</label>
+    <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+        <br><br>
+      <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+      <p id="compatibility"></p>
+    <script>
+
+    
+
+    const DESIRED_RESPONSE =[
+        5, /*strongly agree*/
+        5, /*strongly agree*/
+        4, /*agree*/
+        3, /*Neither agree nor disagree*/
+        1, /*Strongly Disagree*/
+    ]
+    
+    const MAX_SCORE = 25
+    
+
+
+    function calculateCompatibility() {
+        
+        
+        let question1Response = document.getElementById("q1").selectedOptions[0].value;
+        let question2Response = document.getElementById("q2").selectedOptions[0].value;
+        let question3Response = document.getElementById("q3").selectedOptions[0].value;
+        let question4Response = document.getElementById("q4").selectedOptions[0].value;
+        let question5Response = document.getElementById("q5").selectedOptions[0].value;
+        
+        let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+        let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+        let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+        let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+        let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
+        
+      
+       let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
+        
+       totalCompatibility *=100 / MAX_SCORE;
+       totalCompatibility = Math.round(totalCompatibility);
+        
+       
+       /*if totalCompatibility in range (0,50)
+        print("You and I we are uh mehh")
+      
+       if totalCompatibility in range (51,70)
+        print("Not ideal, but can't hurt to try")
+
+       if totalCompatibility in range (71,100)
+        print("Finally a match to die for") */
+
+       document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility;
+        
+
+    }
+
+
+    </script> 
+
+</body>
+
+</html>
