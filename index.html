@@ -67,6 +67,7 @@
         <br><br>
       <button onclick="calculateCompatibility()">Calculate Compatibility</button>
       <p id="compatibility"></p>
+      <p id="message"></p>
     <script>
 
     
@@ -105,20 +106,20 @@
        totalCompatibility = Math.round(totalCompatibility);
         
        
-       /*if totalCompatibility in range (0,50)
-        print("You and I we are uh mehh")
-      
-       if totalCompatibility in range (51,70)
-        print("Not ideal, but can't hurt to try")
-
-       if totalCompatibility in range (71,100)
-        print("Finally a match to die for") */
-
-       document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility;
+       
+       document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + "%";
         
+       if (totalCompatibility > 70){
+        document.getElementById("message").innerHTML = "Finally a match to die for";
+      }
+       else if (totalCompatibility > 50){
+        document.getElementById("message").innerHTML = "Not ideal, but can't hurt to try";
+      }
+      else { document.getElementById("message").innerHTML = "You and I we are uh mehh";}
+      
+
 
     }
-
 
     </script> 
 
